@@ -68,7 +68,7 @@ func saveToken(path string, token *oauth2.Token) {
 	json.NewEncoder(f).Encode(token)
 }
 
-func Authorize() {
+func Authorize() *http.Client {
 	b, err := ioutil.ReadFile("credentials.json")
 	if err != nil {
 		log.Fatalf("Unable to read credentials file: %v", err)
@@ -80,22 +80,5 @@ func Authorize() {
 		log.Fatalf("Unable to parse client secret file to config: %v", err)
 	}
 	client := getClient(config)
-	fmt.Println(client)
-	/*     srv, err := classroom.New(client)
-	 *     if err != nil {
-	 *         log.Fatalf("Unable to create classroom Client %v", err)
-	 *     }
-	 *
-	 *     r, err := srv.Courses.List().PageSize(10).Do()
-	 *     if err != nil {
-	 *         log.Fatalf("Unable to retrieve courses. %v", err)
-	 *     }
-	 *     if len(r.Courses) > 0 {
-	 *         fmt.Print("Courses:\n")
-	 *         for _, c := range r.Courses {
-	 *             fmt.Printf("%s (%s)\n", c.Name, c.Id)
-	 *         }
-	 *     } else {
-	 *         fmt.Print("No courses found.")
-	 *     } */
+	return client
 }
