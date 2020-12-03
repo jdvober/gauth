@@ -1,4 +1,4 @@
-package goGoogleAuth
+package gauth
 
 import (
 	"encoding/json"

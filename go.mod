@@ -1,4 +1,4 @@
-module github.com/jdvober/goGoogleAuth
+module github.com/jdvober/gauth
 
 go 1.15
 
